@@ -17,4 +17,4 @@
 //! So, with that out of the way, let's get started.
 pub mod part1;
 pub mod part2;
-pub mod part2_alternate;
+pub mod part3;

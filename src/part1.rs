@@ -3,7 +3,7 @@
 //! If Rust had native support for HKTs they would ideally look like
 //! this:
 //!
-//! ```text
+//! ```compile_fail
 //! trait Functor<F<_>> {
 //!     fn map<A, B, Func>(fa: F<A>, func: Func) -> F<B>
 //!     where Func: Fn(A) -> B;
@@ -21,7 +21,7 @@
 //!
 //! So, what would a concrete implementation of Functor look like? Let's do Option and Vec:
 //!
-//! ```text
+//! ```compile_fail
 //! impl Functor<Option> for Option {
 //!     fn map<A, B, Func>(fa: Option<A>, func: Func) -> Option<B>
 //!     where Func: Fn(A) -> B {
@@ -33,7 +33,7 @@
 //! }
 //! ```
 //!
-//! ```text
+//! ```compile_fail
 //! impl Functor<Vec> for Vec {
 //!     fn map<A, B, Func>(fa: Vec<A>, func: Func) -> Vec<B>
 //!     where Func: Fn(A) -> B {
@@ -53,7 +53,7 @@
 //! What we *can't* do without higher kinded types is talk *generically* about things that we can map on.
 //! We cannot write a function like this:
 //!
-//! ```text
+//! ```compile_fail
 //!   fn double_int_in_context<F<_>>(f: F<i32>) -> F<i32>
 //!   where F: Functor<F> {
 //!     Functor<F>::map(f, |i| i * 2)
